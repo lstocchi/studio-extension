@@ -20,10 +20,12 @@ export class ModelsManager {
         continue;
       }
       const modelFile = modelEntries[0];
-      const info = fs.statSync(path.resolve(d.path, d.name, modelFile));
+      const fullPath = path.resolve(d.path, d.name, modelFile);
+      const info = fs.statSync(fullPath);
       result.push({
         id: d.name,
         file: modelFile,
+        path: fullPath,
         size: info.size,
         creation: info.mtime,
       });
